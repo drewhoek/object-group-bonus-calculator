@@ -3,19 +3,22 @@ $(document).ready(onReady);
 function onReady() {
   console.log('jQuery and JS loaded correctly')
 
-  appendDOM(allEmployeesInfo);
+
+  $('#pressMe').on('click', appendDOM);
+
+  //appendDOM(allEmployeesInfo);
 }
 
 
-function appendDOM(array) {
-  $('#employeeRow').empty();
+function appendDOM() {
+  $('#tableBody').empty();
 
-  for (let i = 0; i < array.length; i++) {
-    const employeeElement = array[i];
+  for (let i = 0; i < allEmployeesInfo.length; i++) {
+    const employeeElement = allEmployeesInfo[i];
     
     $( '#tableBody' ).append( `<tr>
     <td>${allEmployeesInfo[i].name}</td>
-    <td>${allEmployeesInfo[i].bonusPercentage}</td>
+    <td>${allEmployeesInfo[i].bonusPercentage + '%'}</td>
     <td>${allEmployeesInfo[i].totalCompensation}</td>
     <td>${allEmployeesInfo[i].totalBonus}</td>
   </tr>` )
