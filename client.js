@@ -1,3 +1,27 @@
+$(document).ready(onReady);
+
+function onReady() {
+  console.log('jQuery and JS loaded correctly')
+
+  appendDOM(allEmployeesInfo);
+}
+
+
+function appendDOM(array) {
+  $('#employeeRow').empty();
+
+  for (let i = 0; i < array.length; i++) {
+    const employeeElement = array[i];
+    
+    $( '#tableBody' ).append( `<tr>
+    <td>${allEmployeesInfo[i].name}</td>
+    <td>${allEmployeesInfo[i].bonusPercentage}</td>
+    <td>${allEmployeesInfo[i].totalCompensation}</td>
+    <td>${allEmployeesInfo[i].totalBonus}</td>
+  </tr>` )
+  }
+}
+
 // array of employee objects
 const employees = [
   {
@@ -42,10 +66,13 @@ console.log('array of employee data: ',  employees );
 
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
-
+let allEmployeesInfo = [];
 
 for(let i = 0; i < employees.length; i++){
-  console.log(calculateIndividualEmployeeBonus(employees[i]));
+  let employeeInfo = calculateIndividualEmployeeBonus(employees[i]);
+  console.log(employeeInfo);
+  allEmployeesInfo.push(employeeInfo);
+  console.log(allEmployeesInfo);
 }
 
 
@@ -101,3 +128,4 @@ function calculateIndividualEmployeeBonus( employee ) {
   // return new object with bonus results
   return newObject;
 }
+
