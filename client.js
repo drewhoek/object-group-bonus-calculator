@@ -44,14 +44,60 @@ console.log('array of employee data: ',  employees );
 // Ask questions when you don't.
 
 
+for(let i = 0; i < employees.length; i++){
+  console.log(calculateIndividualEmployeeBonus(employees[i]));
+}
+
+
 
 
 // This function will calculate 1 employee's bonus!
 //
 function calculateIndividualEmployeeBonus( employee ) {  
   // your logic here
-  
-  
-  // return new object with bonus results
+  let bonusVar = 0;
+  let compVar = 0;
+  let totalVar = 0;
+ 
+  // Calculating bonus percentage based on employee rating
+  if (employee.reviewRating <= 2) {
+    bonusVar = 0;
+  } else if (employee.reviewRating === 3) {
+    bonusVar = 4;
+  } else if (employee.reviewRating === 4) {
+    bonusVar = 6;
+  } else if (employee.reviewRating === 5) {
+    bonusVar = 10;
+  }
+  // Calculating bonus percentage based on employee number 
+  if (employee.employeeNumber.length <= 4) {
+    bonusVar += 5;
+  }
+  // Calculating bonus percentage based on salary
+  if (employee.annualSalary > 65,000) {
+    bonusVar -= 1;
+  }
 
+  // Define max and min bonus value
+  if (bonusVar > 13) {
+    bonusVar = 13;
+  } else if (bonusVar < 0) {
+    bonusVar = 0;
+  }
+
+  // Calculating bonus and rounding to the nearest whole number
+  totalVar = Math.round((bonusVar * 0.01)*employee.annualSalary);
+  // Calculating total compensation
+  compVar = Number(totalVar) + Number(employee.annualSalary);
+  //console.log(totalVar);
+  //console.log(compVar);
+
+  let newObject = {
+    name: employee.name,
+    bonusPercentage: bonusVar,
+    totalCompensation: compVar,
+    totalBonus: totalVar,
+  }
+  // return new object with bonus results
+  return newObject;
 }

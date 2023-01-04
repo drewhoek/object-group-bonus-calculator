@@ -76,8 +76,6 @@ and should receive an additional 5%.
 - However, if their annual income is greater than $65,000, they should have their bonus adjusted down 1%.
 - No bonus can be above 13% or below 0% total.
 
----
-
 ## Stretch Goals
 - Put the output on the DOM (visually on the page).
 - Make the app run only after the user clicks on a button on the page
